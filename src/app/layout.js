@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Navbar from "../component/Navbar";
 import Footer from "@/component/Footer";
+import { ToastContainer } from "react-toastify";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -29,10 +30,13 @@ export default function RootLayout({ children }) {
       data-theme="light"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased light`}
     >
-      <body className={`${poppins.className}min-h-screen flex flex-col`}>
+      <body className={`${poppins.className} min-h-screen flex flex-col`}>
         <Navbar />
-        <main className="pt-16">{children}</main>
-        {/* <Footer /> */}
+        <main className="pt-16">
+          {children}
+          <ToastContainer />
+        </main>
+        <Footer />
       </body>
     </html>
   );

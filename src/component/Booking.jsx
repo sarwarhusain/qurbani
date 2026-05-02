@@ -9,6 +9,7 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import { toast } from "react-toastify";
 
 const Booking = () => {
   const onSubmit = (e) => {
@@ -16,7 +17,7 @@ const Booking = () => {
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
 
-    alert(`${userData.email} added successfully`);
+    toast.success(`${userData.email} added successfully`);
   };
   return (
     <div className="flex items-center justify-center my-10 p-10 shadow-2xl">

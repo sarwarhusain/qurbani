@@ -1,29 +1,50 @@
 import Image from "next/image";
+import Link from "next/link";
+import { CiLocationOff } from "react-icons/ci";
+import { LiaBirthdayCakeSolid, LiaWeightHangingSolid } from "react-icons/lia";
 const FeaturedCard = ({ feature }) => {
-  console.log(feature);
+  // console.log(feature);
   return (
-    <div className="relative card bg-base-100 w-96 shadow-sm">
-      <p className="absolute top-5 right-5 text-white">Age:{feature.age}</p>
-      <figure>
+    <div className="max-w-sm rounded-2xl overflow-hidden shadow-lg  hover:shadow-xl transition duration-300">
+      <div className="relative w-full h-56">
         <Image
-          className="rounded-2xl"
-          width={300}
-          height={300}
           src={feature.image}
           alt={feature.name}
+          fill
+          className="object-cover"
         />
-      </figure>
-      <div className="card-body">
-        <h2 className="card-title">
-          {feature.name}
-          <div className="badge ">{feature.category}</div>
-        </h2>
-        <p>{feature.description}</p>
-        <p>{feature.location}</p>
-        <div className="card-actions justify-between">
-          <div className="badge badge-outline">Fashion</div>
-          <div className="badge badge-outline">Products</div>
+      </div>
+      <div className="p-4 space-y-2">
+        <h2 className="text-xl font-semibold">{feature.name}</h2>
+        <p className="text-sm text-gray-600">
+          {feature.breed} . {feature.type}
+        </p>
+
+        <p className="text-sm text-gray-600">{feature.description}</p>
+        <div className="flex justify-between text-sm mt-2">
+          <span className="flex justify-center items-center gap-1">
+            <LiaWeightHangingSolid /> {feature.weight} Kg
+          </span>
+          <span className="flex justify-center items-center gap-1">
+            <LiaBirthdayCakeSolid />
+            {feature.age} yrs
+          </span>
         </div>
+        <div className="flex justify-between text-sm mt-2">
+          <span className="flex justify-center items-center gap-1">
+            <CiLocationOff />
+            {feature.location}
+          </span>
+          <span className="font-semibold text-green-600">
+            ৳ {feature.price}
+          </span>
+        </div>
+        <Link
+          className="block text-center w-full mt-3 bg-gray-300 text-black py-2 rounded-lg hover:bg-[#ffd148] transition"
+          href={`/featured/${feature.id}`}
+        >
+          View Details
+        </Link>
       </div>
     </div>
   );

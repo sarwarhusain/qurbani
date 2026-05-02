@@ -3,7 +3,7 @@ import { data } from "@/lib/data";
 
 const Featured = async () => {
   const features = await data();
-  console.log(features, "featured");
+  // console.log(features, "featured");
   return (
     <div className="my-10">
       <h2>Featured{features.length}</h2>

@@ -3,3 +3,5 @@ export const data = async () => {
   const animalData = await res.json();
   return animalData;
 };
+
+

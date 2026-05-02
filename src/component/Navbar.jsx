@@ -28,8 +28,8 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                href="/animals"
-                className={`${pathname === "/animals" ? "border-b-purple-500 text-purple-500" : ""} hover:text-orange-400 transition-colors`}
+                href="/allAnimals"
+                className={`${pathname === "/allAnimals" ? "border-b-purple-500 text-purple-500" : ""} hover:text-orange-400 transition-colors`}
               >
                 All Animals
               </Link>

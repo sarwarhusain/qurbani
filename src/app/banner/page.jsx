@@ -105,7 +105,9 @@ const Banner = () => {
       </Swiper>
       <div className="flex items-center justify-center py-2">
         <Link href="/animals">
-          <Button>Browse All</Button>
+          <Button variant="" className="bg-gray-300 hover:bg-[#ffd148]">
+            Browse All
+          </Button>
         </Link>
       </div>
     </div>

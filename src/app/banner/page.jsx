@@ -44,12 +44,12 @@ const Banner = () => {
                 </p>
               </div>
               <div className="subtitle" data-swiper-parallax="-200">
-                <h2 className="swiper-slide-title text-2xl md:text-5xl">
+                <h2 className="swiper-slide-title  text-sm md:text-5xl">
                   Halal & Safe Qurbani
                 </h2>
               </div>
               <div className="textdata-swiper-parallax-100">
-                <p className="text-xl">
+                <p className="text-sm md:text-xl">
                   We provide halal and safe Qurbani services with the highest
                   standards of care and responsibility. Every animal is
                   ethically raised in a natural environment, ensuring quality,
@@ -78,12 +78,12 @@ const Banner = () => {
                 </p>
               </div>
               <div className="subtitle" data-swiper-parallax="-200">
-                <h2 className="swiper-slide-title text-6xl">
+                <h2 className="swiper-slide-title text-sm  md:text-5xl">
                   Trusted Halal Qurbani Services
                 </h2>
               </div>
               <div className="textdata-swiper-parallax-100">
-                <p>
+                <p className="text-sm md:text-xl">
                   Our Qurbani process follows strict halal guidelines while
                   prioritizing animal welfare and cleanliness. From farm to
                   sacrifice, we ensure a transparent, safe, and trustworthy

@@ -3,9 +3,10 @@ import { Link, Button } from "@heroui/react";
 import { Bars, PersonFill, XmarkShape } from "@gravity-ui/icons";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import { authClient } from "@/lib/auth-client";
 import { IoExitOutline } from "react-icons/io5";
 import Image from "next/image";
+import { authClient } from "@/lib/auth-client";
+// import { FaGoogle } from "react-icons/fa";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
@@ -65,7 +66,7 @@ const Navbar = () => {
                 <Button variant="ghost">
                   <Link
                     className="no-underline gap-1 flex items-center"
-                    href="/auth/signin"
+                    href="/signin"
                   >
                     <IoExitOutline /> Login
                   </Link>
@@ -73,13 +74,21 @@ const Navbar = () => {
                 <Button variant="ghost">
                   <Link
                     className="no-underline gap-1 flex items-center "
-                    href="/auth/signup"
+                    href="/signup"
                   >
                     <PersonFill /> Sign Up
                   </Link>
                 </Button>
               </>
             )}
+            {/* <Button variant="ghost">
+              <Link
+                className="no-underline gap-1 flex items-center "
+                href="/signup"
+              >
+                <FaGoogle /> Google
+              </Link>
+            </Button> */}
           </div>
           <div className="md:hidden flex items-center">
             <button
@@ -133,7 +142,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  href="/auth/signin"
+                  href="/signin"
                   onClick={() => setIsOpen(false)}
                   className=" p-2 flex items-center gap-1"
                 >
@@ -142,7 +151,7 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  href="/auth/signup"
+                  href="/signup"
                   onClick={() => setIsOpen(true)}
                   className=" p-2 flex items-center gap-1"
                 >

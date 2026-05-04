@@ -1,6 +1,5 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
-import { Check } from "@gravity-ui/icons";
 import {
   Button,
   Description,
@@ -10,26 +9,29 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
+import { error } from "better-auth/api";
 import Link from "next/link";
+import { IoExitOutline } from "react-icons/io5";
 import { toast } from "react-toastify";
 
-const SignUp = () => {
+const Signin = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const userData = Object.fromEntries(formData.entries());
-    console.log("form submitted with:", userData);
-    const { data, error } = await authClient.signUp.email({
-      name: userData.name, // required
+
+    const { data, error } = await authClient.signIn.email({
       email: userData.email, // required
       password: userData.password, // required
-      image: userData.photo,
-      // callbackURL: "/auth/signin",
     });
-    if (error) toast.warning(`${error.message}`);
+    if (error) {
+      toast.error(`${error.message}`);
+    }
     if (data) {
       toast.success(`${userData.email} Added Successfully `);
-      window.location.href = "/auth/signin";
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1500);
     }
   };
   return (
@@ -41,12 +43,6 @@ const SignUp = () => {
         </p>
 
         <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
-          <TextField isRequired name="name" type="name">
-            <Label>Name</Label>
-            <Input placeholder="Enter Your Name" className="focus:right-3 " />
-            <FieldError />
-          </TextField>
-
           <TextField
             isRequired
             name="email"
@@ -59,19 +55,10 @@ const SignUp = () => {
             }}
           >
             <Label>Email</Label>
-            <Input placeholder="abc@example.com" />
+            <Input placeholder="john@example.com" />
             <FieldError />
           </TextField>
-          <TextField isRequired name="phone" type="number">
-            <Label>Phone</Label>
-            <Input placeholder="Enter Your Phone Number" />
-            <FieldError />
-          </TextField>
-          <TextField isRequired name="photo" type="text">
-            <Label>Photo</Label>
-            <Input placeholder="Enter Your Photo Link" />
-            <FieldError />
-          </TextField>
+
           <TextField
             isRequired
             minLength={8}
@@ -96,14 +83,15 @@ const SignUp = () => {
               Must be at least 8 characters with 1 uppercase and 1 number
             </Description>
             <FieldError />
+            
           </TextField>
           <div className="flex flex-col gap-2 mt-4">
             <Button
               className="bg-linear-to-r from-primary to-secondary text-white font-semibold py-2 rounded-xl hove:scale-[1.02] transition"
               type="submit"
             >
-              <Check />
-              Create Account
+              <IoExitOutline />
+              Login
             </Button>
             <Button variant="bordered" type="reset" className="rounded-xl">
               Reset
@@ -111,11 +99,11 @@ const SignUp = () => {
           </div>
         </Form>
         <p className="text-center text-xs mt-6 opacity-60">
-          Already have an account? <Link href="/signin">Login</Link>
+          Do Not have an account? <Link href="/signup">Signin</Link>
         </p>
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default Signin;

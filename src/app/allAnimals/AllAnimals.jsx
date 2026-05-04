@@ -1,11 +1,10 @@
 "use client";
 import AnimalCard from "@/component/AnimalCard";
-import Booking from "@/component/Booking";
 import React, { useState } from "react";
 
 const AllAnimals = ({ animalData }) => {
   const [sort, setSort] = useState("");
-  let sortedData = [...animalData];
+  let sortedData = [...(animalData || [])];
   if (sort === "price") {
     sortedData.sort((a, b) => a.price - b.price);
   }
@@ -25,7 +24,6 @@ const AllAnimals = ({ animalData }) => {
           <AnimalCard key={animal.id} animal={animal}></AnimalCard>
         ))}
       </div>
-      <Booking />
     </div>
   );
 };

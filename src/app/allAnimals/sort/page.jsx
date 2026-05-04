@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const Sort = ({ animalData }) => {
   const [sort, setSort] = useState("");
-  const sortedData = [...animalData];
+  let sortedData = [...(animalData || [])];
   if (sort === "price") {
     sortedData.sort((a, b) => {
       return a.price - b.price;

@@ -10,12 +10,12 @@ export async function proxy(request) {
   if (!session) {
     //if not user
     return NextResponse.redirect(new URL("/signin", request.url));
-}
+  }
 
-return NextResponse.next();
+  return NextResponse.next();
 }
 
 export const config = {
   //   runtime: "nodejs", x// Required for auth.api calls
-  matcher: ["/allAnimals/:path*","/featured/:path*",] // Specify the routes the proxy applies to
+  matcher: ["/allAnimals/:path*", "/featured/:path*"], // Specify the routes the proxy applies to
 };

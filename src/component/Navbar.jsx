@@ -13,7 +13,6 @@ const Navbar = () => {
   // const [isVisible, setIsVisible] = useState(false);
   const { data: session, isPending } = authClient.useSession();
   const user = session?.user;
-  console.log(user, "sessionUser");
 
   return (
     <div className=" bg-gray-100 backdrop-blur-md z-20 fixed top-0 right-0 w-full">
@@ -49,7 +48,7 @@ const Navbar = () => {
               <div className="flex items-center justify-center">
                 <Image
                   className="rounded-full"
-                  src="https://i.postimg.cc/3r20x9L8/IMG-7579.jpg"
+                  src={`${user.image} || https://i.postimg.cc/3r20x9L8/IMG-7579.jpg`}
                   width={50}
                   height={50}
                   alt="avatar"

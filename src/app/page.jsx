@@ -4,6 +4,7 @@ import Featured from "./featured/page";
 import CattleGreat from "@/component/CattleGreat";
 import AllAnimals from "./allAnimals/page";
 import { data } from "@/lib/data";
+import Tips from "@/component/Tips";
 
 const Home =  () => {
   return (
@@ -12,6 +13,7 @@ const Home =  () => {
       <Plan />
       <Featured />
       <CattleGreat />
+      <Tips/>
       
     </div>
   );

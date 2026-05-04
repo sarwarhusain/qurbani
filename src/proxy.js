@@ -17,5 +17,9 @@ export async function proxy(request) {
 
 export const config = {
   //   runtime: "nodejs", x// Required for auth.api calls
-  matcher: ["/allAnimals/:path*", "/featured/:path*"], // Specify the routes the proxy applies to
+  matcher: ["/allAnimals/:path*", "/featured/:path*",'/profile'], // Specify the routes the proxy applies to
 };
+
+
+// sec:
+// client:

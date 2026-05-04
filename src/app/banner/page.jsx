@@ -15,7 +15,7 @@ import Link from "next/link";
 
 const Banner = () => {
   return (
-    <div className=" bg-gray-100">
+    <div className=" bg-gray-100 animate__animated animate__fadeInUp">
       <Swiper
         style={{
           "--swiper-navigation-color": "#fff",
@@ -78,7 +78,7 @@ const Banner = () => {
                 </p>
               </div>
               <div className="subtitle" data-swiper-parallax="-200">
-                <h2 className="swiper-slide-title text-sm  md:text-5xl">
+                <h2 className="animate__animated animate__bounce text-sm  md:text-5xl">
                   Trusted Halal Qurbani Services
                 </h2>
               </div>

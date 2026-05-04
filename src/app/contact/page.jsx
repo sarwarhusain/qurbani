@@ -1,4 +1,7 @@
 "use client";
+
+import { useState } from "react";
+import { FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { authClient } from "@/lib/auth-client";
 import {
   Button,
@@ -9,12 +12,10 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
-import { error } from "better-auth/api";
-import Link from "next/link";
 import { IoExitOutline } from "react-icons/io5";
 import { toast } from "react-toastify";
 
-const Signin = () => {
+const ContactPage = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -34,15 +35,51 @@ const Signin = () => {
       }, 1500);
     }
   };
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-linear-to-br from-primary/30 via-base-200 to-secondary/30 px-4">
-      <div className="w-full max-w-md p-8 rounded-3xl bg-white/10 backdrop:backdrop-blur-xl border border-white/20 shadow-2xl">
-        <h2 className="text-3xl font-bold text-center mb-2">Create Account</h2>
-        <p className="text-center text-sm opacity-70 mb-6">
-          Sign up to get started 🚀
-        </p>
 
-        <Form className="flex flex-col gap-4" onSubmit={onSubmit}>
+  return (
+    <div className="min-h-screen flex items-center justify-center px-4 py-10 bg-gray-100">
+      <div className="w-full max-w-5xl grid md:grid-cols-2 gap-8">
+        {/* LEFT INFO */}
+        <div className="p-6 rounded-2xl bg-white backdrop-blur-lg border border-white shadow-lg animate__animated animate__fadeInLeft">
+          <h2 className="text-3xl font-bold mb-4">Get in Touch</h2>
+
+          <p className="text-gray-600 mb-6">
+            Have questions about Qurbani animals or booking? We are here to help
+            you anytime.
+          </p>
+
+          <div className="space-y-4 text-sm">
+            <div className="flex items-center gap-3">
+              <FaPhone className="text-green-500" />
+              <span>+8801749875859</span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <FaEnvelope className="text-blue-500" />
+              <span>sarwarahmed693@gmail.com</span>
+            </div>
+
+            <div className="flex items-center gap-3">
+              <FaMapMarkerAlt className="text-red-500" />
+              <span>Sylhet, Bangladesh</span>
+            </div>
+          </div>
+        </div>
+
+        <Form
+          className="w-full max-w-md p-8 rounded-3xl bg-white/10 backdrop:backdrop-blur-xl border border-white/20 shadow-2xl flex flex-col gap-4 animate__animated animate__fadeInRight"
+          onSubmit={onSubmit}
+        >
+          <TextField isRequired name="name" type="text">
+            <Label>Name</Label>
+            <Input placeholder="Enter Your Name" />
+            <FieldError />
+          </TextField>
+          <TextField isRequired name="description" type="text">
+            <Label>Description</Label>
+            <Input placeholder="Enter Your Idea" />
+            <FieldError />
+          </TextField>
           <TextField
             isRequired
             name="email"
@@ -86,23 +123,21 @@ const Signin = () => {
           </TextField>
           <div className="flex flex-col gap-2 mt-4">
             <Button
-              className="bg-linear-to-r from-primary to-secondary text-white font-semibold py-2 rounded-xl hove:scale-[1.02] transition"
+              className="bg-linear-to-r from-primary to-secondary text-white font-semibold py-2 rounded-xl  transition"
               type="submit"
             >
               <IoExitOutline />
-              Login
+              Send
             </Button>
             <Button variant="bordered" type="reset" className="rounded-xl">
               Reset
             </Button>
           </div>
         </Form>
-        <p className="text-center text-xs mt-6 opacity-60">
-          Do Not have an account? <Link href="/signup">Signin</Link>
-        </p>
       </div>
     </div>
+    // </div>
   );
 };
 
-export default Signin;
+export default ContactPage;

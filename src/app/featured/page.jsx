@@ -6,7 +6,7 @@ const Featured = async () => {
   // console.log(features, "featured");
   return (
     <div className="my-10">
-      <h2>Featured{features.length}</h2>
+      {/* <h2>Featured{features.length}</h2> */}
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-5">
         {features.slice(0, 4).map((feature) => (
           <FeaturedCard key={feature.id} feature={feature}></FeaturedCard>

@@ -1,3 +1,4 @@
+import Booking from "@/component/Booking";
 import { data } from "@/lib/data";
 import Image from "next/image";
 import Link from "next/link";
@@ -16,7 +17,6 @@ const FeatureDet = async ({ params }) => {
             src={feature.image}
             alt={feature.name}
             fill
-            
             className="object-cover"
           />
         </div>
@@ -52,6 +52,9 @@ const FeatureDet = async ({ params }) => {
             HOME
           </Link>
         </div>
+      </div>
+      <div>
+        <Booking />
       </div>
     </div>
   );

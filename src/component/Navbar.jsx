@@ -6,12 +6,21 @@ import { usePathname } from "next/navigation";
 import { IoExitOutline } from "react-icons/io5";
 import Image from "next/image";
 import { authClient } from "@/lib/auth-client";
+import { FaGoogle } from "react-icons/fa";
+import { CiUser } from "react-icons/ci";
 // import { FaGoogle } from "react-icons/fa";
 const Navbar = () => {
+  const handleGoogle = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+
+    console.log(data);
+  };
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   // const [isVisible, setIsVisible] = useState(false);
-  const { data: session, isPending } = authClient.useSession();
+  const { data: session } = authClient.useSession();
   const user = session?.user;
 
   return (
@@ -41,18 +50,20 @@ const Navbar = () => {
                 All Animals
               </Link>
             </li>
+            <li>
+              <Link
+                href="/profile"
+                className={`${pathname === "/profile" ? "border-b-purple-500 text-purple-500" : ""} hover:text-orange-400 transition-colors`}
+              >
+                Profile
+              </Link>
+            </li>
           </ul>
 
           <div className="hidden md:block">
             {user ? (
               <div className="flex items-center justify-center">
-                <Image
-                  className="rounded-full"
-                  src={`${user.image} || https://i.postimg.cc/3r20x9L8/IMG-7579.jpg`}
-                  width={50}
-                  height={50}
-                  alt="avatar"
-                ></Image>
+                <CiUser className="rounded-full border text-5xl p-3" />
                 <Button
                   onClick={async () => await authClient.signOut()}
                   variant="ghost"
@@ -78,16 +89,11 @@ const Navbar = () => {
                     <PersonFill /> Sign Up
                   </Link>
                 </Button>
+                <Button onClick={handleGoogle} variant="ghost">
+                  <FaGoogle /> Google
+                </Button>
               </>
             )}
-            {/* <Button variant="ghost">
-              <Link
-                className="no-underline gap-1 flex items-center "
-                href="/signup"
-              >
-                <FaGoogle /> Google
-              </Link>
-            </Button> */}
           </div>
           <div className="md:hidden flex items-center">
             <button
@@ -126,19 +132,7 @@ const Navbar = () => {
                   All Animals
                 </Link>
               </li>
-              <li>
-                <Link
-                  href="/about"
-                  onClick={() => setIsOpen(false)}
-                  className={`block p-2 ${
-                    pathname === "/about"
-                      ? "text-orange-500 font-semibold "
-                      : ""
-                  }`}
-                >
-                  About
-                </Link>
-              </li>
+
               <li>
                 <Link
                   href="/signin"
@@ -157,6 +151,9 @@ const Navbar = () => {
                   <PersonFill /> Sign Up
                 </Link>
               </li>
+              <Button onClick={handleGoogle} variant="ghost">
+                <FaGoogle /> Google
+              </Button>
             </ul>
           </div>
         )}

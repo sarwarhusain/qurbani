@@ -3,10 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { CiLocationOff } from "react-icons/ci";
 import { LiaBirthdayCakeSolid, LiaWeightHangingSolid } from "react-icons/lia";
+import Booking from "./Booking";
 
 const AnimalCard = ({ animal }) => {
   return (
-    <div className="max-w-sm  overflow-hidden shadow-lg my-2 card border border-white/20  rounded-2xl p-4 transition duration-300 hover:shadow-2xl hover:-translate-y-2 hover:shadow-cyan-400/40">
+    <div className="animate__animated animate__fadeInUp max-w-sm  overflow-hidden shadow-lg my-2 card border border-white/20  rounded-2xl p-4 transition duration-300 hover:shadow-2xl hover:-translate-y-2 hover:shadow-cyan-400/40">
       <div className="relative overflow-hidden w-full h-56">
         <Image
           src={animal.image}

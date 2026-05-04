@@ -38,7 +38,7 @@ const Booking = () => {
           }}
         >
           <Label>Email</Label>
-          <Input placeholder="john@example.com" />
+          <Input placeholder="abc@gmail.com" />
           <FieldError />
         </TextField>
         <TextField isRequired name="phone" type="number">
@@ -52,10 +52,10 @@ const Booking = () => {
           <FieldError />
         </TextField>
       
-        <div className="flex gap-2">
+        <div className="flex flex-col gap-2">
           <Button type="submit">
             <Check />
-            Submit
+           Booked
           </Button>
           <Button type="reset" variant="secondary">
             Reset

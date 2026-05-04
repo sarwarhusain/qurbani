@@ -5,13 +5,13 @@ import { LiaBirthdayCakeSolid, LiaWeightHangingSolid } from "react-icons/lia";
 const FeaturedCard = ({ feature }) => {
   // console.log(feature);
   return (
-    <div className="max-w-sm rounded-2xl overflow-hidden shadow-lg  hover:shadow-xl transition duration-300">
+    <div className="max-w-sm  overflow-hidden shadow-lg my-2 card border border-white/20  rounded-2xl p-4 transition duration-300 hover:shadow-2xl hover:-translate-y-2 hover:shadow-cyan-400/40">
       <div className="relative w-full h-56">
         <Image
           src={feature.image}
           alt={feature.name}
           fill
-          className="object-cover"
+          className="object-cover rounded-2xl"
         />
       </div>
       <div className="p-4 space-y-2">

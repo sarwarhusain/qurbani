@@ -15,7 +15,7 @@ import Link from "next/link";
 
 const Banner = () => {
   return (
-    <div className="my-5 bg-gray-100">
+    <div className=" bg-gray-100">
       <Swiper
         style={{
           "--swiper-navigation-color": "#fff",
@@ -104,7 +104,7 @@ const Banner = () => {
         </SwiperSlide>
       </Swiper>
       <div className="flex items-center justify-center py-2">
-        <Link href="/animals">
+        <Link href="/allAnimals">
           <Button variant="" className="bg-gray-300 hover:bg-[#ffd148]">
             Browse All
           </Button>

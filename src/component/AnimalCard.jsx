@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { CiLocationOff } from "react-icons/ci";
@@ -5,19 +6,19 @@ import { LiaBirthdayCakeSolid, LiaWeightHangingSolid } from "react-icons/lia";
 
 const AnimalCard = ({ animal }) => {
   return (
-    <div className="max-w-sm rounded-2xl overflow-hidden shadow-lg  hover:shadow-xl transition duration-300">
-      <div className="relative w-full h-56">
+    <div className="max-w-sm  overflow-hidden shadow-lg my-2 card border border-white/20  rounded-2xl p-4 transition duration-300 hover:shadow-2xl hover:-translate-y-2 hover:shadow-cyan-400/40">
+      <div className="relative overflow-hidden w-full h-56">
         <Image
           src={animal.image}
           alt={animal.name}
           fill
-          className="object-cover"
+          className="object-cover rounded-2xl mb-4 w-full"
         />
       </div>
-      <div className="p-4 space-y-2">
+      <div className="p-4 space-y-2 ">
         <h2 className="text-xl font-semibold">{animal.name}</h2>
         <p className="text-sm text-gray-600">
-          {animal.breed} . {animal.type}
+          {animal.breed}: {animal.type}
         </p>
 
         <p className="text-sm text-gray-600">{animal.description}</p>

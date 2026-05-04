@@ -3,10 +3,17 @@ import { Link, Button } from "@heroui/react";
 import { Bars, PersonFill, XmarkShape } from "@gravity-ui/icons";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { authClient } from "@/lib/auth-client";
+import { IoExitOutline } from "react-icons/io5";
+import Image from "next/image";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   // const [isVisible, setIsVisible] = useState(false);
+  const { data: session, isPending } = authClient.useSession();
+  const user = session?.user;
+  console.log(user, "sessionUser");
+
   return (
     <div className=" bg-gray-100 backdrop-blur-md z-20 fixed top-0 right-0 w-full">
       <nav className="sticky top-0 z-40 w-full  ">
@@ -37,22 +44,42 @@ const Navbar = () => {
           </ul>
 
           <div className="hidden md:block">
-            <Button variant="ghost">
-              <Link
-                className="no-underline gap-1 flex items-center"
-                href="/login"
-              >
-                <PersonFill /> Login
-              </Link>
-            </Button>
-            <Button variant="ghost">
-              <Link
-                className="no-underline gap-1 flex items-center"
-                href="/signup"
-              >
-                <PersonFill /> Sign Up
-              </Link>
-            </Button>
+            {user ? (
+              <div className="flex items-center justify-center">
+                <Image
+                  className="rounded-full"
+                  src="https://i.postimg.cc/3r20x9L8/IMG-7579.jpg"
+                  width={50}
+                  height={50}
+                  alt="avatar"
+                ></Image>
+                <Button
+                  onClick={async () => await authClient.signOut()}
+                  variant="ghost"
+                >
+                  LogOut
+                </Button>
+              </div>
+            ) : (
+              <>
+                <Button variant="ghost">
+                  <Link
+                    className="no-underline gap-1 flex items-center"
+                    href="/auth/signin"
+                  >
+                    <IoExitOutline /> Login
+                  </Link>
+                </Button>
+                <Button variant="ghost">
+                  <Link
+                    className="no-underline gap-1 flex items-center "
+                    href="/auth/signup"
+                  >
+                    <PersonFill /> Sign Up
+                  </Link>
+                </Button>
+              </>
+            )}
           </div>
           <div className="md:hidden flex items-center">
             <button
@@ -106,16 +133,16 @@ const Navbar = () => {
               </li>
               <li>
                 <Link
-                  href="/login"
+                  href="/auth/signin"
                   onClick={() => setIsOpen(false)}
                   className=" p-2 flex items-center gap-1"
                 >
-                  <PersonFill /> Login
+                  <IoExitOutline /> Login
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/signup"
+                  href="/auth/signup"
                   onClick={() => setIsOpen(true)}
                   className=" p-2 flex items-center gap-1"
                 >
